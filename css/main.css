@@ -1,0 +1,601 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 78px;
+}
+
+body {
+  height: 100%;
+  min-height: 100vh;
+  font-size: 62.5%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #ddd;
+  padding-top: 1em;
+}
+
+.section {
+  padding: 6em 2em;
+  min-height: 100%;
+}
+
+.hero-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.stars {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 1em;
+}
+.stars .fa-star {
+  font-size: 0.8rem;
+  color: #ffd700;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  padding: 1em;
+  color: #ddd;
+  background-image: url(../img/header-small.jpg);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  z-index: 0;
+}
+.header::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+.header__logo {
+  width: 180px;
+}
+.header__text {
+  font-size: 0.8rem;
+}
+.header__link {
+  margin-top: 2em;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  color: #ddd;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  transition: color 0.4s, background-color 0.4s;
+}
+.header__link:hover {
+  background-color: #ddd;
+  color: #000;
+}
+
+.nav {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1em;
+  z-index: 4;
+}
+.nav__btn {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  right: 2em;
+  background: none;
+  border: none;
+}
+.nav__btn:hover .nav__btn-bars::after, .nav__btn:hover .nav__btn-bars::before {
+  width: 100%;
+}
+.nav__btn-bars {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #ffd700;
+  right: 0;
+  top: 14px;
+}
+.nav__btn-bars::before, .nav__btn-bars::after {
+  position: absolute;
+  content: "";
+  background-color: #ffd700;
+  height: 3px;
+  right: 0;
+  transition: width 0.4s;
+}
+.nav__btn-bars::before {
+  top: -14px;
+  width: 50%;
+}
+.nav__btn-bars::after {
+  top: 14px;
+  width: 50%;
+}
+.nav__box {
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+.nav__box__img {
+  width: 50px;
+}
+.nav__box__items {
+  display: none;
+  margin-left: auto;
+}
+.nav__box__items-item {
+  position: relative;
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  margin: 0 0.5em;
+  color: #ddd;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.4s;
+  z-index: 0;
+}
+.nav__box__items-item::before, .nav__box__items-item::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 2px solid transparent;
+  transition: width 0.4s, border 0.4s, height 0.4s;
+}
+.nav__box__items-item::before {
+  left: 0;
+  top: 0;
+}
+.nav__box__items-item::after {
+  right: 0;
+  bottom: 0;
+}
+.nav__box__items-item:hover {
+  color: #ffd700;
+}
+.nav__box__items-item:hover::before, .nav__box__items-item:hover::after {
+  width: 50%;
+  height: 50%;
+}
+.nav__box__items-item:hover::before {
+  border-top: 2px solid #ffd700;
+  border-left: 2px solid #ffd700;
+}
+.nav__box__items-item:hover::after {
+  border-bottom: 2px solid #ffd700;
+  border-right: 2px solid #ffd700;
+}
+
+.section__about-game {
+  background-color: #282828;
+}
+.section__about-game__box {
+  display: flex;
+  flex-direction: column;
+  color: #ddd;
+}
+.section__about-game__box-img--two {
+  display: none;
+}
+.section__about-game__box-text {
+  margin-top: 2em;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.characters {
+  position: relative;
+  min-height: 100%;
+  background-color: #282828;
+  background-image: url(../img/charactes-bg-small.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+}
+.characters::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+.characters__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+.characters__box__card {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  padding: 2em;
+  margin: 2em auto;
+  border-radius: 10px;
+  background: transparent;
+  -webkit-backdrop-filter: blur(1.3rem);
+          backdrop-filter: blur(1.3rem);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+.characters__box__card-img {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}
+.characters__box__card__text {
+  text-align: center;
+  color: #ddd;
+}
+.characters__box__card__text-title {
+  color: #ffd700;
+  margin-top: 1em;
+  font-size: 1.4rem;
+}
+.characters__box__card__text-info {
+  margin-top: 0.5em;
+  font-size: 0.8rem;
+}
+
+.online {
+  background-color: #000;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+.online__box {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 100%;
+}
+.online__box__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  min-height: 100%;
+  color: #ddd;
+  text-align: center;
+}
+.online__box__text-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+  color: #ffd700;
+}
+.online__box__text-info {
+  font-size: 0.8rem;
+}
+.online__box-one, .online__box-two {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.online__box-one::before, .online__box-two::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+.online__box-one {
+  background-image: url(../img/online-one-small.jpg);
+}
+.online__box-two {
+  background-image: url(../img/online-two-small.jpg);
+}
+
+.vehicles {
+  background-color: #000;
+  min-height: 100%;
+}
+.vehicles .vehicles__box {
+  min-height: 100%;
+}
+.vehicles .vehicles__box-title {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #ffd700;
+}
+.vehicles .vehicles__box__gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.vehicles .vehicles__box__gallery__item {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 20rem;
+  width: 100%;
+  height: 100%;
+  margin: 0.5em;
+  z-index: 0;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.vehicles .vehicles__box__gallery__item-img {
+  width: 100%;
+}
+.vehicles .vehicles__box__gallery__item-info {
+  display: block;
+  position: absolute;
+  bottom: 1em;
+  font-size: 1rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ddd;
+  text-align: center;
+  padding: 0.5em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.weapon {
+  position: relative;
+  min-height: 100%;
+  background-image: url(../img/weapon.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+}
+.weapon::before {
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+.weapon .weapon__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.weapon .weapon__box .weapon__table {
+  width: 100%;
+  margin: 2em 0;
+  color: #ddd;
+}
+.weapon .weapon__box .weapon__table td,
+.weapon .weapon__box .weapon__table th {
+  background-color: #282828;
+}
+.weapon .weapon__box .weapon__table__head-title {
+  font-size: 1rem;
+  padding: 1em;
+}
+.weapon .weapon__box .weapon__table__body-title {
+  font-size: 0.8rem;
+  padding: 1em 0.5em;
+}
+.weapon .weapon__box .weapon__table__body-img {
+  display: block;
+  padding: 1em 0.5em;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.footer {
+  text-align: center;
+  background-color: #282828;
+  color: #ddd;
+  padding: 3em;
+}
+
+@media (min-width: 568px) {
+  .section__about-game__box-img {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .characters__box {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 768px) {
+  .header__logo {
+    width: 200px;
+  }
+  .header__text {
+    font-size: 1.2rem;
+  }
+  .header__link {
+    font-size: 1.2rem;
+  }
+  .section__about-game__box-text {
+    font-size: 1.2rem;
+  }
+  .online__box__text-title {
+    font-size: 1.4rem;
+  }
+  .online__box__text-info {
+    font-size: 1rem;
+  }
+  .vehicles .vehicles__box__gallery__item {
+    width: 45%;
+  }
+  .weapon .weapon__box .weapon__table {
+    width: 80%;
+  }
+  .weapon .weapon__box .weapon__table__body-img {
+    width: 50%;
+  }
+  .footer {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 768px) and (min-width: 992px) {
+  .header {
+    background-image: url(../img/header.jpg);
+  }
+  .header__logo {
+    width: 300px;
+  }
+  .section__about-game {
+    min-height: 100%;
+  }
+  .section__about-game__box {
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem;
+  }
+  .section__about-game__box-img {
+    display: none;
+  }
+  .section__about-game__box-img--two {
+    display: inline-block;
+    width: 400px;
+    box-shadow: 5px 5px 15px #000;
+  }
+  .section__about-game__box-text {
+    padding: 2rem;
+  }
+  .nav {
+    padding: 2em;
+  }
+  .nav__btn {
+    display: none;
+  }
+  .nav__box {
+    display: flex;
+  }
+  .nav__box__items {
+    display: block;
+  }
+  .characters {
+    background-image: url(../img/charactes-bg.jpg);
+  }
+  .characters__box:hover .characters__box__card:not(:hover) {
+    filter: grayscale(1);
+  }
+  .characters__box__card {
+    max-width: 300px;
+    transition: transform 0.4s, filter 0.4s;
+  }
+  .characters__box__card:hover {
+    transform: scale(1.1);
+  }
+  .characters__box__card__text-info {
+    font-size: 1rem;
+  }
+  .online__box {
+    flex-direction: row;
+  }
+  .online__box-one::before, .online__box-two::before, .online__box__text {
+    transform: translateY(100%);
+  }
+  .online__box-one:hover::before, .online__box-two:hover::before, .online__box-two:hover .online__box__text, .online__box-one:hover .online__box__text {
+    transform: translateY(0);
+  }
+  .online__box-one::before, .online__box-two::before {
+    transition: transform 0.4s;
+  }
+  .online__box-one {
+    background-image: url(../img/online-one.jpg);
+  }
+  .online__box-two {
+    background-image: url(../img/online-two.jpg);
+    background-position: 100% 0;
+  }
+  .online__box__text {
+    transition: transform 0.4s;
+  }
+  .online__box__text-title {
+    font-size: 1.6rem;
+  }
+  .online__box__text-info {
+    font-size: 1.2rem;
+  }
+  .vehicles .vehicles__box-title {
+    font-size: 1.2rem;
+  }
+  .vehicles .vehicles__box__gallery__item {
+    width: 32%;
+  }
+  .vehicles .vehicles__box__gallery__item-info {
+    font-size: 1.2rem;
+    bottom: 2em;
+    transform: translateY(300%);
+    transition: transform 0.4s;
+  }
+  .vehicles .vehicles__box__gallery__item:hover .vehicles__box__gallery__item-info {
+    transform: translateY(0);
+  }
+  .weapon .weapon__box {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .weapon .weapon__box .weapon__table {
+    width: 45%;
+    margin: 2em;
+  }
+  .weapon .weapon__box .weapon__table:nth-child(3) {
+    margin-top: -50em;
+  }
+  .weapon .weapon__box .weapon__table__head-title {
+    font-size: 1.4rem;
+    padding: 1em;
+  }
+  .weapon .weapon__box .weapon__table__body-title {
+    font-size: 1rem;
+    padding: 2em;
+  }
+  .weapon .weapon__box .weapon__table__body-img {
+    width: 80%;
+  }
+}/*# sourceMappingURL=main.css.map */

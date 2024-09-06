@@ -1,0 +1,705 @@
+@use 'colors';
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 78px;
+}
+
+body {
+	height: 100%;
+	min-height: 100vh;
+	font-size: 62.5%;
+	font-family: 'Montserrat', sans-serif;
+}
+// GLOBAL CLASS
+.wrapper {
+	margin: 0 auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+.section-title {
+	text-align: center;
+	font-size: 2rem;
+	color: colors.$white-color;
+	padding-top: 1em;
+}
+
+.section {
+	padding: 6em 2em;
+	min-height: 100%;
+}
+.hero-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: colors.$shadow-color;
+	z-index: -1;
+}
+
+.stars {
+	text-align: center;
+	margin-bottom: 2rem;
+	margin-top: 1em;
+	.fa-star {
+		font-size: 0.8rem;
+		color: colors.$main-color;
+	}
+}
+
+// HEADER
+.header {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100vh;
+	height: 100%;
+	padding: 1em;
+	color: colors.$white-color;
+	background-image: url(../img/header-small.jpg);
+	background-size: cover;
+	background-position: center;
+	text-align: center;
+	z-index: 0;
+	&::before {
+		position: absolute;
+		content: '';
+		width: 100%;
+		height: 100%;
+		background-color: colors.$shadow-color;
+		z-index: -1;
+	}
+
+	&__logo {
+		width: 180px;
+	}
+
+	&__text {
+		font-size: 0.8rem;
+	}
+
+	&__link {
+		margin-top: 2em;
+		text-decoration: none;
+		padding: 0.5em 1em;
+		color: colors.$white-color;
+		font-size: 0.8rem;
+		border: 1px solid colors.$white-color;
+		border-radius: 1rem;
+		transition: color 0.4s, background-color 0.4s;
+		&:hover {
+			background-color: colors.$white-color;
+			color: colors.$black-color;
+		}
+	}
+}
+
+// NAV
+.nav {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	top: 0;
+	width: 100%;
+	background-color: colors.$shadow-color;
+	padding: 1em;
+	z-index: 4;
+
+	&__btn {
+		position: relative;
+		width: 30px;
+		height: 30px;
+		right: 2em;
+		background: none;
+		border: none;
+
+		&:hover .nav__btn-bars::after,
+		&:hover .nav__btn-bars::before {
+			width: 100%;
+		}
+
+		&-bars {
+			position: absolute;
+			width: 100%;
+			height: 3px;
+			background-color: colors.$main-color;
+			right: 0;
+			top: 14px;
+			&::before,
+			&::after {
+				position: absolute;
+				content: '';
+				background-color: colors.$main-color;
+				height: 3px;
+				right: 0;
+				transition: width 0.4s;
+			}
+			&::before {
+				top: -14px;
+				width: 50%;
+			}
+			&::after {
+				top: 14px;
+				width: 50%;
+			}
+		}
+	}
+
+	&__box {
+		align-items: center;
+		width: 80%;
+		margin: 0 auto;
+
+		&__img {
+			width: 50px;
+		}
+		&__items {
+			display: none;
+			margin-left: auto;
+			&-item {
+				position: relative;
+				font-size: 1rem;
+				padding: 0.5em 1em;
+				margin: 0 0.5em;
+				color: #ddd;
+				text-decoration: none;
+				text-transform: uppercase;
+				transition: color 0.4s;
+				z-index: 0;
+				&::before,
+				&::after {
+					content: '';
+					position: absolute;
+					width: 0;
+					height: 0;
+					border: 2px solid transparent;
+					transition: width 0.4s, border 0.4s, height 0.4s;
+				}
+
+				&::before {
+					left: 0;
+					top: 0;
+				}
+				&::after {
+					right: 0;
+					bottom: 0;
+				}
+
+				&:hover {
+					color: colors.$main-color;
+				}
+
+				&:hover::before,
+				&:hover::after {
+					width: 50%;
+					height: 50%;
+				}
+				&:hover::before {
+					border-top: 2px solid colors.$main-color;
+					border-left: 2px solid colors.$main-color;
+				}
+				&:hover::after {
+					border-bottom: 2px solid colors.$main-color;
+					border-right: 2px solid colors.$main-color;
+				}
+			}
+		}
+	}
+}
+
+// 	ABOUT GAME {
+.section__about-game {
+	background-color: colors.$lightBlack-color;
+	&__box {
+		display: flex;
+		flex-direction: column;
+		color: colors.$white-color;
+		&-img {
+			&--two {
+				display: none;
+			}
+		}
+		&-text {
+			margin-top: 2em;
+			text-align: center;
+			font-size: 1rem;
+		}
+	}
+}
+
+// CHARACTERS
+.characters {
+	position: relative;
+	min-height: 100%;
+	background-color: #282828;
+	background-image: url(../img/charactes-bg-small.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	z-index: 0;
+	&::before {
+		position: absolute;
+		content: '';
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: colors.$shadow-color;
+		z-index: -1;
+	}
+	&__box {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		max-width: 1200px;
+		width: 100%;
+
+		&__card {
+			position: relative;
+			width: 100%;
+			max-width: 250px;
+			padding: 2em;
+			margin: 2em auto;
+			border-radius: 10px;
+			background: transparent;
+			backdrop-filter: blur(1.3rem);
+			box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+			z-index: 0;
+			&-img {
+				display: block;
+				margin: 0 auto;
+				width: 200px;
+			}
+
+			&__text {
+				text-align: center;
+				color: colors.$white-color;
+
+				&-title {
+					color: colors.$main-color;
+					margin-top: 1em;
+					font-size: 1.4rem;
+				}
+				&-info {
+					margin-top: 0.5em;
+					font-size: 0.8rem;
+				}
+			}
+		}
+	}
+}
+
+// OONLINE
+.online {
+	background-color: colors.$black-color;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	&__box {
+		display: flex;
+		flex-direction: column;
+		min-width: 100%;
+		min-height: 100%;
+		&__text {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			padding: 2em;
+			min-height: 100%;
+			color: colors.$white-color;
+			text-align: center;
+			&-title {
+				font-size: 1rem;
+				text-transform: uppercase;
+				margin-bottom: 1em;
+				color: colors.$main-color;
+			}
+			&-info {
+				font-size: 0.8rem;
+			}
+		}
+		&-one,
+		&-two {
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			background-size: cover;
+			background-position: center;
+			// background-attachment: fixed;
+
+			z-index: 0;
+			&::before {
+				position: absolute;
+				content: '';
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: colors.$shadow-color-online;
+				z-index: -1;
+			}
+		}
+		&-one {
+			background-image: url(../img/online-one-small.jpg);
+		}
+		&-two {
+			background-image: url(../img/online-two-small.jpg);
+		}
+	}
+}
+// VEHICLES
+.vehicles {
+	background-color: colors.$black-color;
+	min-height: 100%;
+	.vehicles__box {
+		min-height: 100%;
+		&-title {
+			font-size: 1.2rem;
+			text-align: center;
+			margin-bottom: 1em;
+			color: colors.$main-color;
+		}
+		&__gallery {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			&__item {
+				position: relative;
+				flex-grow: 1;
+				flex-basis: 20rem;
+				width: 100%;
+				height: 100%;
+				margin: 0.5em;
+				z-index: 0;
+				border-radius: 0.5rem;
+				box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+				overflow: hidden;
+
+				&-img {
+					width: 100%;
+				}
+				&-info {
+					display: block;
+					position: absolute;
+					bottom: 1em;
+					font-size: 1rem;
+					width: 100%;
+					background-color: rgba(0, 0, 0, 0.7);
+					color: colors.$white-color;
+					text-align: center;
+					padding: 0.5em;
+					text-transform: uppercase;
+					z-index: 2;
+				}
+			}
+		}
+	}
+}
+
+// WEAPON
+.weapon {
+	position: relative;
+	min-height: 100%;
+	background-image: url(../img/weapon.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	z-index: 0;
+	&::before {
+		content: '';
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-color: colors.$shadow-color-online;
+		z-index: -1;
+	}
+
+	.weapon__box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.weapon__table {
+			width: 100%;
+			margin: 2em 0;
+			color: colors.$white-color;
+
+			td,
+			th {
+				background-color: colors.$lightBlack-color;
+			}
+			&__head {
+				&-title {
+					font-size: 1rem;
+					padding: 1em;
+				}
+			}
+			&__body {
+				&-title {
+					font-size: 0.8rem;
+					padding: 1em 0.5em;
+				}
+				&-img {
+					display: block;
+					padding: 1em 0.5em;
+					margin: 0 auto;
+					width: 80%;
+				}
+			}
+		}
+	}
+}
+
+// FOOTER
+.footer {
+	text-align: center;
+	background-color: colors.$lightBlack-color;
+	color: colors.$white-color;
+	padding: 3em;
+}
+// MEDIA
+@media (min-width: 568px) {
+	.section__about-game {
+		&__box {
+			&-img {
+				width: 50%;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	.characters {
+		&__box {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.header {
+		&__logo {
+			width: 200px;
+		}
+
+		&__text {
+			font-size: 1.2rem;
+		}
+
+		&__link {
+			font-size: 1.2rem;
+		}
+	}
+	.section__about-game {
+		&__box {
+			&-text {
+				font-size: 1.2rem;
+			}
+		}
+	}
+	.online {
+		&__box {
+			&__text {
+				&-title {
+					font-size: 1.4rem;
+				}
+				&-info {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
+	.vehicles {
+		.vehicles__box {
+			&__gallery {
+				&__item {
+					width: 45%;
+				}
+			}
+		}
+	}
+	.weapon {
+		.weapon__box {
+			.weapon__table {
+				width: 80%;
+
+				&__body {
+					&-img {
+						width: 50%;
+					}
+				}
+			}
+		}
+	}
+
+	.footer {
+		font-size: 1rem;
+	}
+
+	@media (min-width: 992px) {
+		.header {
+			background-image: url(../img/header.jpg);
+			&__logo {
+				width: 300px;
+			}
+		}
+		.section__about-game {
+			min-height: 100%;
+			&__box {
+				flex-direction: row;
+				align-items: center;
+				padding: 2rem;
+				&-img {
+					display: none;
+					&--two {
+						display: inline-block;
+						width: 400px;
+						// padding: 1rem;
+						box-shadow: 5px 5px 15px colors.$black-color;
+					}
+				}
+				&-text {
+					padding: 2rem;
+				}
+			}
+		}
+
+		.nav {
+			padding: 2em;
+			&__btn {
+				display: none;
+			}
+			&__box {
+				display: flex;
+				&__items {
+					display: block;
+				}
+			}
+		}
+		.characters {
+			background-image: url(../img/charactes-bg.jpg);
+			&__box {
+				&:hover .characters__box__card:not(:hover) {
+					filter: grayscale(1);
+				}
+				&__card {
+					max-width: 300px;
+					transition: transform 0.4s, filter 0.4s;
+					&:hover {
+						transform: scale(1.1);
+					}
+					&__text {
+						&-info {
+							font-size: 1rem;
+						}
+					}
+				}
+			}
+		}
+		.online {
+			&__box {
+				flex-direction: row;
+				&-one::before,
+				&-two::before,
+				&__text {
+					transform: translateY(100%);
+				}
+
+				&-one:hover::before,
+				&-two:hover::before,
+				&-two:hover .online__box__text,
+				&-one:hover .online__box__text {
+					transform: translateY(0);
+				}
+				&-one::before,
+				&-two::before {
+					transition: transform 0.4s;
+				}
+
+				&-one {
+					background-image: url(../img/online-one.jpg);
+				}
+				&-two {
+					background-image: url(../img/online-two.jpg);
+					background-position: 100% 0;
+				}
+				&__text {
+					transition: transform 0.4s;
+					&-title {
+						font-size: 1.6rem;
+					}
+					&-info {
+						font-size: 1.2rem;
+					}
+				}
+			}
+		}
+
+		.vehicles {
+			.vehicles__box {
+				&-title {
+					font-size: 1.2rem;
+				}
+				&__gallery {
+					&__item {
+						width: 32%;
+
+						&-info {
+							font-size: 1.2rem;
+							bottom: 2em;
+							transform: translateY(300%);
+							transition: transform 0.4s;
+						}
+						&:hover .vehicles__box__gallery__item-info {
+							transform: translateY(0);
+						}
+					}
+				}
+			}
+		}
+		.weapon {
+			.weapon__box {
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: flex-start;
+				.weapon__table {
+					width: 45%;
+					margin: 2em;
+					&:nth-child(3) {
+						margin-top: -50em;
+					}
+					&__head {
+						&-title {
+							font-size: 1.4rem;
+							padding: 1em;
+						}
+					}
+					&__body {
+						&-title {
+							font-size: 1rem;
+							padding: 2em;
+						}
+						&-img {
+							width: 80%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
